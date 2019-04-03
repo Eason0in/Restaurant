@@ -8,12 +8,12 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
 //index
-app.get("/", (req, res) => {
+app.get("/Restaurant/", (req, res) => {
   res.render("index", { restaurants: restaurantList });
 });
 
 //點選餐廳切到詳細頁面
-app.get("/restaurants/:id", (req, res) => {
+app.get("/Restaurant/restaurants/:id", (req, res) => {
   const restaurant = restaurantList.find(item => {
     return item.id === Number(req.params.id);
   });
@@ -21,7 +21,7 @@ app.get("/restaurants/:id", (req, res) => {
 });
 
 //搜尋
-app.get("/search", (req, res) => {
+app.get("/Restaurant/search", (req, res) => {
   const keyword = req.query.keyword;
   const searchRestaurant = restaurantList.filter(item => {
     return item.name.toLowerCase().includes(keyword.toLowerCase());
